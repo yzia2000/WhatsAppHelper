@@ -1,1 +1,2 @@
-[38485:38485:0823/035634.625253:ERROR:browser_main_loop.cc(1469)] Unable to open X display.
+[7598:7598:0823/132507.813233:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[7571:7571:0823/133405.812352:WARNING:pref_notifier_impl.cc(40)] Pref observer for media_router.cast_allow_all_ips found at shutdown.

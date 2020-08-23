@@ -10,12 +10,14 @@ from automation import sendMessage
 mic = sr.Microphone()
 r = sr.Recognizer()
 
+exclusionList= ["Malaysia", "Family Chat"]
+
 def keepAsking():
     while True:
-        playsound.playsound('./askForReply.mp3')
+        playsound.playsound('askForReply.mp3')
 
         with mic as source:
-            r.adjust_for_ambient_noise(source)
+            # r.adjust_for_ambient_noise(source)
             audio = r.listen(source)
 
         reply = r.recognize_google(audio)
@@ -31,7 +33,7 @@ def keepAsking():
         playsound.playsound('confirm.mp3')
 
         with mic as source:
-            r.adjust_for_ambient_noise(source)
+            # r.adjust_for_ambient_noise(source)
             audio = r.listen(source)
 
         confirm = r.recognize_google(audio)
@@ -49,6 +51,11 @@ def notifications(bus, message):
     name = message.get_args_list()[3]
     text = message.get_args_list()[4]
 
+    for excluded in exclusionList:
+        if excluded in name:
+            playsound.playsound('./excluded.mp3')
+            return
+
     cleanr = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});')
     cleantext = re.sub(cleanr, '', text)
     cleantext = cleantext.replace("web.whatsapp.com", "")
@@ -63,7 +70,7 @@ def notifications(bus, message):
     playsound.playsound('latest.mp3')
 
     with mic as source:
-        r.adjust_for_ambient_noise(source)
+        # r.adjust_for_ambient_noise(source)
         audio = r.listen(source)
 
     perm = r.recognize_google(audio)
@@ -71,12 +78,13 @@ def notifications(bus, message):
     print(perm)
 
     if "yes" not in perm:
+        playsound.playsound('discarded.mp3')
         return
 
     (cancel, reply) = keepAsking()
 
     if cancel:
-        playsound.playsound('./discarded.mp3')
+        playsound.playsound('discarded.mp3')
         return
 
     playsound.playsound('sending.mp3')

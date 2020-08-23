@@ -8,13 +8,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 import socket
 
 options = webdriver.ChromeOptions()
+# options.add_argument("--no-sandbox")
+# options.add_argument("--headless")
 options.add_argument(r"user-data-dir=/home/yushi/Documents/WhatsAppHelper/.chrome_cache")
 
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome("/home/yushi/Downloads/chromedriver", options=options)
 
 driver.get('https://web.whatsapp.com')
-
-# input("[Enter] after scanning")
 
 def sendMessage(target, message):
     user = driver.find_element_by_xpath("//span[@title='{}']".format(target))
