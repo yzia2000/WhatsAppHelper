@@ -78,11 +78,17 @@ def notifications(bus, message):
     length = len(cleantext)
     cleantext = cleantext[:(length - 12)]
 
-    print("{} says: {}".format(name, cleantext))
-    tts = gTTS("{} says: {}. Do you want to reply?".format(name, cleantext), lang="en")
-    tts.save('latest.mp3')
-    playsound.playsound('latest.mp3')
+    if name not in notificationsDict:
+        notificationsDict[name] = []
 
+    notificationsDict[name].append(cleantext)
+    print(notificationsDict)
+
+    readMessage(name, cleantext)
+
+    notificationHandler(name, cleantext)
+
+def notificationHandler(name, cleantext):
     with mic as source:
         r.adjust_for_ambient_noise(source)
         audio = r.listen(source)
@@ -103,7 +109,11 @@ def notifications(bus, message):
     else:
         playsound.playsound('discarded.mp3')
 
-
+def readMessage(name, cleantext):
+    print("{} says: {}".format(name, cleantext))
+    tts = gTTS("{} says: {}. Do you want to reply?".format(name, cleantext), lang="en")
+    tts.save('latest.mp3')
+    playsound.playsound('latest.mp3')
 
 DBusGMainLoop(set_as_default=True)
 
@@ -113,6 +123,3 @@ bus.add_message_filter(notifications)
 
 mainloop = gi.repository.GLib.MainLoop()
 mainloop.run()
-
-while True:
-

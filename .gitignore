@@ -1,3 +1,4 @@
-.chrome_cache
+./.chrome_cache/
+./__pycache__/
 ./latest.mp3
 ./reply.mp3

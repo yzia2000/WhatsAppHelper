@@ -1,5 +1,0 @@
-[12370:12370:0902/160052.899124:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
-[12373:12382:0902/160053.075715:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 5
-[12370:12370:0902/160120.249307:WARNING:xproto_util.cc(49)] X error received: serial 2637, error_code 170 (GLXBadWindow), request_code 152, minor_code 32 (X_GLXDestroyWindow)
-[12370:12370:0902/160120.249494:WARNING:xproto_util.cc(49)] X error received: serial 2643, error_code 3 (BadWindow (invalid Window parameter)), request_code 4, minor_code 0 (X_DestroyWindow)
-[12343:12343:0902/160120.292054:WARNING:pref_notifier_impl.cc(40)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
