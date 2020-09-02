@@ -12,7 +12,7 @@ options = webdriver.ChromeOptions()
 # options.add_argument("--headless")
 options.add_argument(r"user-data-dir=/home/yushi/Documents/WhatsAppHelper/.chrome_cache")
 
-driver = webdriver.Chrome("/home/yushi/Downloads/chromedriver", options=options)
+driver = webdriver.Chrome(options=options)
 
 driver.get('https://web.whatsapp.com')
 
