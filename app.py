@@ -7,7 +7,6 @@ import playsound
 import speech_recognition as sr
 from automation import sendMessage
 
-notificationsDict = {}
 mic = sr.Microphone()
 r = sr.Recognizer()
 
@@ -77,12 +76,6 @@ def notifications(bus, message):
     cleantext.strip()
     length = len(cleantext)
     cleantext = cleantext[:(length - 12)]
-
-    if name not in notificationsDict:
-        notificationsDict[name] = []
-
-    notificationsDict[name].append(cleantext)
-    print(notificationsDict)
 
     readMessage(name, cleantext)
 
