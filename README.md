@@ -1,5 +1,4 @@
 # WhatsAppHelper
-TTS, Speech Recognition and Selenium to create a seamless voice based WhatsApp reply experience
 
 ### Instructions
 ```
